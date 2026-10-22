@@ -1,0 +1,30 @@
+# Processamento e Análise de Dados
+numpy
+pandas
+scipy
+
+# Visualização de Dados
+matplotlib
+seaborn
+plotly
+tabulate
+
+# Aprendizado de Máquina e PLN Clássico
+scikit-learn
+nltk
+gensim
+
+# Deep Learning e Transformers
+torch
+transformers
+
+# Web Scraping (scraper.ipynb)
+beautifulsoup4
+cloudscraper
+
+# SDKs e APIs
+typesafe-sdk
+
+# Suporte ao Jupyter Notebook
+ipykernel
+nbformat
