@@ -17,6 +17,9 @@ gensim
 # Deep Learning e Transformers
 torch
 transformers
+sentence-transformers>=3.0
+streamlit
+google-genai
 
 # Web Scraping (scraper.ipynb)
 beautifulsoup4
