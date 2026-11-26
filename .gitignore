@@ -11,6 +11,7 @@ venv.bak/
 __pycache__/
 *.py[cod]
 *$py.class
+.cache/
 
 # Jupyter Notebook
 .ipynb_checkpoints/
@@ -31,3 +32,8 @@ desktop.ini
 *.log
 *.tmp
 scratch/
+
+# API keys
+.env
+.env.*
+!.env.example

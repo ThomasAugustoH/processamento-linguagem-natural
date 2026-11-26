@@ -94,3 +94,33 @@ Ao abrir os notebooks (`.ipynb`) no VS Code ou Jupyter Lab, selecione o kernel *
 - **`Aula_8_Teste_Jev.ipynb`**: Avaliação de LLM / inferência via API TypeSafe (Noul).
 - **`scraper.ipynb`**: Extração de dados da plataforma Backloggd.
 - **`jogos_nlp_completo.csv`** e **`top_jogos_backloggd.csv`**: Datasets utilizados nos experimentos.
+
+---
+
+## Aplicação web base: GameMatch
+
+A aplicação usa o catálogo já presente em `jogos_nlp_completo.csv`. O índice semântico é criado localmente com o modelo multilíngue `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`; os textos e metadados originais do catálogo são mantidos, sem um mapa manual de termos.
+
+### Executar
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Na primeira execução, o modelo de embeddings é baixado e os vetores são armazenados em `.cache/`. A busca continua disponível sem uma chave de API: nesse modo, os jogos são apresentados pela ordem de similaridade.
+
+Para habilitar as explicações do agente com Gemini, configure `GOOGLE_API_KEY` antes de iniciar o Streamlit. No PowerShell:
+
+```powershell
+$env:GOOGLE_API_KEY = "sua-chave"
+streamlit run app.py
+```
+
+O agente recebe somente os jogos recuperados, produz explicações em JSON e tem seus IDs validados pela aplicação. Se a chave não estiver configurada ou a resposta não passar pela validação, a interface mantém os resultados da busca semântica.
+
+### Arquivos da aplicação
+
+- `app.py`: interface Streamlit, filtros e histórico curto da sessão.
+- `rag_engine.py`: leitura do CSV, geração/cache de embeddings e busca semântica.
+- `recommendation_agent.py`: agente com contexto do RAG, validação de saída e fallback local.
